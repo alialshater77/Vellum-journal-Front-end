@@ -8,7 +8,7 @@ const nextBin = require.resolve("next/dist/bin/next");
 const raw = readFileSync(new URL("../wrangler.jsonc", import.meta.url), "utf8");
 const json = raw.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
 const config = JSON.parse(json);
-const env = { ...process.env };
+const env = { ...process.env, CLOUDFLARE_BUILD: "1" };
 
 if (config.vars && typeof config.vars === "object") {
   for (const [key, value] of Object.entries(config.vars)) {

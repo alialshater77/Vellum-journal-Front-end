@@ -33,6 +33,7 @@ function imageSetup() {
 }
 
 const images = imageSetup();
+const cloudflareBuild = process.env.CLOUDFLARE_BUILD === "1";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -65,8 +66,9 @@ const nextConfig: NextConfig = {
       bodySizeLimit: "2mb",
     },
   },
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Cache Components throws Error 1101 on the Cloudflare worker. Local dev keeps it.
+  cacheComponents: !cloudflareBuild,
+  partialPrefetching: !cloudflareBuild,
   turbopack: {
     rules: {
       "*.css": {
