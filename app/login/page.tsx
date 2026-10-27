@@ -4,8 +4,6 @@ import { LoginForm } from "@/components/auth-forms";
 import { AuthShell } from "@/components/auth-shell";
 import { safeNext } from "@/lib/session";
 
-export const instant = false;
-
 export const metadata: Metadata = {
   title: "Enter",
 };

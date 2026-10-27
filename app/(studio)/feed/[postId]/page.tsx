@@ -12,8 +12,6 @@ import { getPostById, postImageSrc } from "@/lib/api";
 import { formatWhen, personName, POST_ID, wasRevised } from "@/lib/format";
 import { readPress, requireViewer } from "@/lib/guards";
 
-export const instant = false;
-
 export async function generateMetadata({
   params,
 }: {

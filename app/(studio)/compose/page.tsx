@@ -6,8 +6,6 @@ import { DeskNote } from "@/components/desk-note";
 import { PostForm } from "@/components/post-form";
 import { requireViewer } from "@/lib/guards";
 
-export const instant = false;
-
 export const metadata: Metadata = {
   title: "Write",
 };

@@ -6,8 +6,6 @@ import { ProfileForm } from "@/components/profile-form";
 import { personName } from "@/lib/format";
 import { requireViewer } from "@/lib/guards";
 
-export const instant = false;
-
 export const metadata: Metadata = {
   title: "Profile",
 };

@@ -8,8 +8,6 @@ import { getFeed } from "@/lib/api";
 import { parsePage } from "@/lib/format";
 import { readPress, requireViewer } from "@/lib/guards";
 
-export const instant = false;
-
 export async function generateMetadata({
   searchParams,
 }: {

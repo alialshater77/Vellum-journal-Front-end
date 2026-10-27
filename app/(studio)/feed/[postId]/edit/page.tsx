@@ -9,8 +9,6 @@ import { getPostById, postImageSrc } from "@/lib/api";
 import { POST_ID } from "@/lib/format";
 import { readPress, requireViewer } from "@/lib/guards";
 
-export const instant = false;
-
 export const metadata: Metadata = {
   title: "Revise",
 };
