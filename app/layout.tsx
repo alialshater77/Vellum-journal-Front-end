@@ -20,17 +20,44 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+const siteUrl = new URL(
+  process.env.NEXT_PUBLIC_SITE_URL || "https://vellum-journal.alialshater7.workers.dev",
+);
+
+const description = "A private journal for pictured notes. A new dispatch, a revision, or a removal shows on every open desk.";
+
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: {
     default: "Vellum",
     template: "%s · Vellum",
   },
-  description: "A live journal. Print a dispatch and every open desk turns the page.",
+  description,
   applicationName: "Vellum",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Vellum",
-    description: "A live journal. Print a dispatch and every open desk turns the page.",
+    description,
     type: "website",
+    url: "/",
+    siteName: "Vellum",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 627,
+        alt: "Vellum, a private journal for pictured notes",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vellum",
+    description,
+    images: ["/og.png"],
   },
 };
 
