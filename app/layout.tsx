@@ -1,24 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Outfit } from "next/font/google";
 import { Suspense } from "react";
 
 import { PressWake } from "@/components/press-wake";
 import { SiteHeader } from "@/components/site-header";
 import { HeaderFallback } from "@/components/skeletons";
 import "./globals.css";
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
+import "./fonts.css";
 
 const siteUrl = new URL(
   process.env.NEXT_PUBLIC_SITE_URL || "https://vellum-journal.alialshater7.workers.dev",
@@ -70,7 +57,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${outfit.variable} ${fraunces.variable} h-full`}>
+    <html lang="en" className="h-full">
       <body className="flex min-h-full flex-col antialiased">
         <a href="#content" className="skip-link">
           Skip to content

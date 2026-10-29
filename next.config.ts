@@ -45,17 +45,23 @@ const nextConfig: NextConfig = {
     remotePatterns: images.patterns,
   },
   async headers() {
+    const shared = [
+      { key: "X-Content-Type-Options", value: "nosniff" },
+      { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+      { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+      { key: "X-DNS-Prefetch-Control", value: "off" },
+    ];
+    // LinkedIn renders a project-link preview in an iframe. DENY on the public
+    // page makes that preview fail. Signed-in routes still refuse framing.
+    const framed = [{ key: "X-Frame-Options", value: "DENY" }];
     return [
-      {
-        source: "/:path*",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-          { key: "X-DNS-Prefetch-Control", value: "off" },
-        ],
-      },
+      { source: "/:path*", headers: shared },
+      { source: "/feed", headers: framed },
+      { source: "/feed/:path*", headers: framed },
+      { source: "/compose", headers: framed },
+      { source: "/account", headers: framed },
+      { source: "/login", headers: framed },
+      { source: "/signup", headers: framed },
     ];
   },
   experimental: {
